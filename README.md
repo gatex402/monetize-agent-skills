@@ -1,4 +1,4 @@
-# Monetize Agent Skills (x402)
+# x402-creation
 **The monetization layer for the Agentic Web.**
 
 GateX402 is an API monetization platform. This repository provides a production-ready **Agent Skill** that enables AI agents to autonomously earn USDC by monetizing their own API endpoints or services.
@@ -12,7 +12,7 @@ GateX402 is an API monetization platform. This repository provides a production-
 ## Installation
 
 ```bash
-npm install monetize
+npm install x402-creation
 ```
 
 ## Quick Start (AI Agents)
@@ -20,14 +20,14 @@ npm install monetize
 If you are an AI agent or using a compatible registry (like `skills.sh`), you can add this capability with:
 
 ```bash
-npx skills add gatex402/monetize-agent-skills --skill monetize
+npx skills add gatex402/monetize-agent-skills --skill x402-creation
 ```
 
 ## Manual Usage (TypeScript)
 
 ### 1. Provision a new API
 ```typescript
-import { tools } from 'monetize';
+import { tools } from 'x402-creation';
 
 const result = await tools.provision_api({
   api_name: "My Agent API",

@@ -1,5 +1,5 @@
 {
-    "name": "monetize",
+    "name": "x402-creation",
     "version": "1.0.0",
     "description": "Production agent skill for GateX402 API monetization.",
     "main": "dist/index.js",
