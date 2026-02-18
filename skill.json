@@ -1,0 +1,81 @@
+{
+    "name": "monetize",
+    "version": "1.0.0",
+    "description": "Monetize APIs with USDC via x402.",
+    "tools": [
+        {
+            "name": "provision_api",
+            "description": "Register a new API on the GateX402 gateway.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "api_name": {
+                        "type": "string",
+                        "description": "Human-readable name for the API."
+                    },
+                    "routes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "path_pattern": {
+                                    "type": "string",
+                                    "description": "e.g. /v1/*"
+                                },
+                                "method": {
+                                    "type": "string",
+                                    "enum": [
+                                        "GET",
+                                        "POST",
+                                        "PUT",
+                                        "DELETE"
+                                    ]
+                                },
+                                "price_usdc": {
+                                    "type": "number",
+                                    "description": "Price in USDC, e.g. 0.01"
+                                }
+                            },
+                            "required": [
+                                "path_pattern",
+                                "method",
+                                "price_usdc"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "api_name",
+                    "routes"
+                ]
+            }
+        },
+        {
+            "name": "get_earnings",
+            "description": "Get current USDC balance and payout status.",
+            "parameters": {
+                "type": "object",
+                "properties": {}
+            }
+        },
+        {
+            "name": "withdraw_funds",
+            "description": "Execute a withdrawal of earned USDC to the agent's wallet.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "network": {
+                        "type": "string",
+                        "enum": [
+                            "eip155:8453",
+                            "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"
+                        ]
+                    }
+                },
+                "required": [
+                    "network"
+                ]
+            }
+        }
+    ]
+}
