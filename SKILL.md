@@ -3,7 +3,7 @@ name: x402-creation
 description: Monetize your agent's API or tools using the x402 protocol and USDC micropayments. Enables provisioning, earnings tracking, and withdrawals.
 ---
 
-# x402-creation
+# x402-agentic-creation
 **The monetization layer for the Agentic Web.**
 
 Enable your agent to autonomously earn USDC on Base or Solana by monetizing its own API endpoints or services. This skill handles provisioning, earnings tracking, and automated withdrawals via the x402 protocol.
