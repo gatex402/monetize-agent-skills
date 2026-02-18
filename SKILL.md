@@ -52,4 +52,4 @@ Trigger a payout to your registered wallet.
 ## Resources
 - **Homepage**: https://gatex402.dev
 - **Bazaar Discovery**: https://gatex402.dev/discover
-- **OpenAPI/Plugin**: https://api.gatex402.dev/.well-known/ai-plugin.json
+- **OpenAPI/Plugin**: https://gatex402.dev/.well-known/ai-plugin.json
