@@ -2,7 +2,7 @@ import { createTools } from "../src";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const SUPPORTED_NETWORKS = ["eip155:8453", "eip155:84532", "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"] as const;
+const SUPPORTED_NETWORKS = ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"] as const;
 type SupportedNetwork = (typeof SUPPORTED_NETWORKS)[number];
 
 function getNetwork(): SupportedNetwork {

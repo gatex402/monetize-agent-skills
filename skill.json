@@ -15,8 +15,8 @@
                     },
                     "network": {
                         "type": "string",
-                        "enum": ["eip155:8453", "eip155:84532", "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"],
-                        "description": "CAIP-2 network ID: eip155:8453 (Base), eip155:84532 (Base Sepolia testnet), or Solana."
+                        "enum": ["eip155:8453", "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"],
+                        "description": "CAIP-2 network ID: eip155:8453 (Base Mainnet), solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL (Solana Mainnet)."
                     },
                     "origin_url": {
                         "type": "string",
@@ -79,10 +79,9 @@
                         "type": "string",
                         "enum": [
                             "eip155:8453",
-                            "eip155:84532",
                             "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"
                         ],
-                        "description": "CAIP-2 network ID: eip155:8453 (Base), eip155:84532 (Base Sepolia), or Solana."
+                        "description": "CAIP-2 network ID: eip155:8453 (Base Mainnet), solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL (Solana Mainnet)."
                     }
                 },
                 "required": [

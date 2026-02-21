@@ -61,11 +61,16 @@ const balance = await tools.get_earnings();
 const tx = await tools.withdraw_funds({ network: "eip155:8453" });
 ```
 
+## Supported networks
+
+- **Base Mainnet**: `eip155:8453`
+- **Solana Mainnet**: `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL`
+
 ## Tools Definition
 
-- `provision_api`: Registers a new API gateway instance on GateX402. Requires `api_name`, `network` (e.g. `eip155:8453` for Base), `origin_url` (your API’s base URL—the backend you monetize, not the gateway), and `routes` (array of `{ path_pattern, method, price_usdc }`). Management token is passed to `storeManagementToken` and never returned to the agent.
+- `provision_api`: Registers a new API gateway instance on GateX402. Requires `api_name`, `network` (e.g. `eip155:8453` for Base Mainnet, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana Mainnet), `origin_url` (your API’s base URL—the backend you monetize, not the gateway), and `routes` (array of `{ path_pattern, method, price_usdc }`). Management token is passed to `storeManagementToken` and never returned to the agent.
 - `get_earnings`: Returns current USDC balance (sanitized). No parameters.
-- `withdraw_funds`: Triggers a payout. Requires `network` (e.g. `eip155:8453` for Base, `eip155:84532` for Base Sepolia testnet).
+- `withdraw_funds`: Triggers a payout. Requires `network` (e.g. `eip155:8453` for Base Mainnet, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana Mainnet).
 
 ## Security Guardrails
 

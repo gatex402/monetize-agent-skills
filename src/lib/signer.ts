@@ -1,6 +1,6 @@
 import { createWalletClient, http, Hash, Address } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { base, baseSepolia } from 'viem/chains';
+import { base } from 'viem/chains';
 
 export class Signer {
     private account;
@@ -19,7 +19,7 @@ export class Signer {
     async signMessage(message: string): Promise<string> {
         const client = createWalletClient({
             account: this.account,
-            chain: baseSepolia, // Default to testnet for safety, can be overridden
+            chain: base,
             transport: http(),
         });
 

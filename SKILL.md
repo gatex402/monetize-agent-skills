@@ -15,7 +15,7 @@ Enable your agent to autonomously earn USDC on Base or Solana by monetizing its 
 
 - **Protocol**: x402 (HTTP 402 Payment Required)
 - **Currency**: USDC (Stablecoin)
-- **Networks**: Base (Ethereum L2), Base Sepolia (testnet), Solana
+- **Networks**: Base Mainnet (Ethereum L2), Solana Mainnet
 - **Fees**: 1% platform fee (99% provider revenue)
 - **Payouts**: Daily automated withdrawals
 - **Min Price**: $0.001 per request
@@ -43,7 +43,7 @@ Use this tool to register a new API on the GateX402 gateway.
 
 - **Required Inputs**:
   - `api_name` — Human-readable name for the API.
-  - `network` — CAIP-2 network ID (e.g. `eip155:8453` for Base, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana).
+  - `network` — CAIP-2 network ID (e.g. `eip155:8453` for Base Mainnet, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana Mainnet).
   - `origin_url` — **Your API’s base URL** (the backend you are monetizing), e.g. `https://your-api.example.com`. Do not use the gateway URL (`api.gatex402.dev`).
   - `routes` — Array of `{ path_pattern, method, price_usdc }` (e.g. `path_pattern: "/v1/chat"`, `method: "POST"`, `price_usdc: 0.01`).
 - **Outcome**: Returns `api_slug` and `provider_id` in a boundary-wrapped response. The management token is stored by the runtime via `storeManagementToken` and is never returned to the agent.
@@ -59,7 +59,7 @@ Retrieve real-time balance of earned USDC split by network.
 
 Trigger a payout to your registered wallet.
 
-- **Required Inputs**: `network` (e.g. `eip155:8453` for Base, `eip155:84532` for Base Sepolia).
+- **Required Inputs**: `network` (e.g. `eip155:8453` for Base Mainnet, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana Mainnet).
 - **Outcome**: Sanitized status/tx data wrapped in response boundaries.
 
 ## Guardrails
