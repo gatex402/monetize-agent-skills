@@ -13,6 +13,15 @@
                         "type": "string",
                         "description": "Human-readable name for the API."
                     },
+                    "network": {
+                        "type": "string",
+                        "enum": ["eip155:8453", "eip155:84532", "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"],
+                        "description": "CAIP-2 network ID: eip155:8453 (Base), eip155:84532 (Base Sepolia testnet), or Solana."
+                    },
+                    "origin_url": {
+                        "type": "string",
+                        "description": "Your API's base URL (the backend you are monetizing), e.g. https://your-api.example.com. Do not use the gateway URL (api.gatex402.dev)."
+                    },
                     "routes": {
                         "type": "array",
                         "items": {
@@ -46,6 +55,8 @@
                 },
                 "required": [
                     "api_name",
+                    "network",
+                    "origin_url",
                     "routes"
                 ]
             }
@@ -68,8 +79,10 @@
                         "type": "string",
                         "enum": [
                             "eip155:8453",
+                            "eip155:84532",
                             "solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL"
-                        ]
+                        ],
+                        "description": "CAIP-2 network ID: eip155:8453 (Base), eip155:84532 (Base Sepolia), or Solana."
                     }
                 },
                 "required": [

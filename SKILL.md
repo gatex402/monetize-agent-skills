@@ -4,6 +4,7 @@ description: Monetize your agent's API or tools using the x402 protocol and USDC
 ---
 
 # x402-agentic-creation
+
 **The monetization layer for the Agentic Web.**
 
 Enable your agent to autonomously earn USDC on Base or Solana by monetizing its own API endpoints or services. This skill handles provisioning, earnings tracking, and automated withdrawals via the x402 protocol.
@@ -11,21 +12,25 @@ Enable your agent to autonomously earn USDC on Base or Solana by monetizing its 
 [Official Website](https://gatex402.dev) | [LLM Documentation](https://gatex402.dev/llms-full.txt)
 
 ## Platform Data
+
 - **Protocol**: x402 (HTTP 402 Payment Required)
 - **Currency**: USDC (Stablecoin)
-- **Networks**: Base (Ethereum L2), Solana
+- **Networks**: Base (Ethereum L2), Base Sepolia (testnet), Solana
 - **Fees**: 1% platform fee (99% provider revenue)
 - **Payouts**: Daily automated withdrawals
 - **Min Price**: $0.001 per request
 
 ## x402 Protocol Flow
+
 1. **Challenge**: Gateway returns HTTP 402 with payment headers.
 2. **Transfer**: Agent submits USDC transfer to specified address.
 3. **Verification**: Facilitator confirms transaction on-chain.
 4. **Dispatch**: Gateway forwards the authorized request to the provider.
 
 ## Activation
+
 Add this skill to your agent to allow it to:
+
 - **Provision**: Register a new API gateway instance on GateX402.
 - **Monetize**: Set USDC pricing per request for its tools/endpoints.
 - **Withdraw**: Transfer USDC earnings to its wallet.
@@ -33,23 +38,39 @@ Add this skill to your agent to allow it to:
 ## Tools
 
 ### `provision_api`
+
 Use this tool to register a new API on the GateX402 gateway.
-- **Required Inputs**: `api_name`, `routes` (array of `{ path_pattern, method, price_usdc }`).
-- **Outcome**: Returns a `management_token` and `api_slug`. The token MUST be stored securely.
+
+- **Required Inputs**:
+  - `api_name` — Human-readable name for the API.
+  - `network` — CAIP-2 network ID (e.g. `eip155:8453` for Base, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana).
+  - `origin_url` — **Your API’s base URL** (the backend you are monetizing), e.g. `https://your-api.example.com`. Do not use the gateway URL (`api.gatex402.dev`).
+  - `routes` — Array of `{ path_pattern, method, price_usdc }` (e.g. `path_pattern: "/v1/chat"`, `method: "POST"`, `price_usdc: 0.01`).
+- **Outcome**: Returns `api_slug` and `provider_id` in a boundary-wrapped response. The management token is stored by the runtime via `storeManagementToken` and is never returned to the agent.
 
 ### `get_earnings`
+
 Retrieve real-time balance of earned USDC split by network.
-- **Inputs**: None.
+
+- **Inputs**: None (uses management token from host).
+- **Outcome**: Sanitized balance data wrapped in `<!-- GATEX402_API_RESPONSE -->` boundaries.
 
 ### `withdraw_funds`
+
 Trigger a payout to your registered wallet.
-- **Required Inputs**: `network` (e.g. `eip155:8453` for Base).
+
+- **Required Inputs**: `network` (e.g. `eip155:8453` for Base, `eip155:84532` for Base Sepolia).
+- **Outcome**: Sanitized status/tx data wrapped in response boundaries.
 
 ## Guardrails
-- **Management Token**: Never share the `gx4_mgmt_...` token. It is the root key for your API settings and earnings.
-- **Wallet Ownership**: Provisioning requires a wallet signature. Ensure the agent has access to its private key for the handshake.
+
+- **Management Token**: The runtime stores the `gx4_mgmt_...` token via `storeManagementToken`; it is never returned to the agent.
+- **Credentials**: Wallet private key and management token are injected by the host via `createTools` only; they must never appear in tool parameters.
 
 ## Resources
+
+- **Backend**: https://api.gatex402.dev (all provisioning, balance, and withdrawal requests)
+- **OpenAPI spec**: https://api.gatex402.dev/openapi.json
 - **Homepage**: https://gatex402.dev
 - **Bazaar Discovery**: https://gatex402.dev/discover
-- **OpenAPI/Plugin**: https://gatex402.dev/.well-known/ai-plugin.json
+- **AI Plugin**: https://api.gatex402.dev/.well-known/ai-plugin.json

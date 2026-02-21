@@ -21,7 +21,9 @@ export class GateX402Client {
         });
         if (!res.ok) {
             const error = await res.json().catch(() => ({ message: 'Unknown error' }));
-            throw new Error(error.message || `API Error: ${res.status}`);
+            const detail = typeof error.details === 'string' ? error.details : (error.errors ? JSON.stringify(error.errors) : '');
+            const msg = [error.message, detail].filter(Boolean).join(' ');
+            throw new Error(msg || `API Error: ${res.status}`);
         }
         return res.json();
     }
@@ -32,7 +34,9 @@ export class GateX402Client {
         });
         if (!res.ok) {
             const error = await res.json().catch(() => ({ message: 'Unknown error' }));
-            throw new Error(error.message || `API Error: ${res.status}`);
+            const detail = typeof error.details === 'string' ? error.details : (error.errors ? JSON.stringify(error.errors) : '');
+            const msg = [error.message, detail].filter(Boolean).join(' ');
+            throw new Error(msg || `API Error: ${res.status}`);
         }
         return res.json();
     }
@@ -45,7 +49,9 @@ export class GateX402Client {
         });
         if (!res.ok) {
             const error = await res.json().catch(() => ({ message: 'Unknown error' }));
-            throw new Error(error.message || `API Error: ${res.status}`);
+            const detail = typeof error.details === 'string' ? error.details : (error.errors ? JSON.stringify(error.errors) : '');
+            const msg = [error.message, detail].filter(Boolean).join(' ');
+            throw new Error(msg || `API Error: ${res.status}`);
         }
         return res.json();
     }
