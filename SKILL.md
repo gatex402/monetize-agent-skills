@@ -1,9 +1,9 @@
 ---
-name: x402-creation
+name: x402-agentic-creation
 description: Monetize your agent's API or tools using the x402 protocol and USDC micropayments. Enables provisioning, earnings tracking, and withdrawals.
 ---
 
-# x402-agentic-creation
+# x402-creation
 
 **The monetization layer for the Agentic Web.**
 
@@ -46,7 +46,7 @@ Use this tool to register a new API on the GateX402 gateway.
   - `network` — CAIP-2 network ID (e.g. `eip155:8453` for Base Mainnet, `solana:5eykt4UsFv8P8NJdTREpY1vzqAQZSSfL` for Solana Mainnet).
   - `origin_url` — **Your API’s base URL** (the backend you are monetizing), e.g. `https://your-api.example.com`. Do not use the gateway URL (`api.gatex402.dev`).
   - `routes` — Array of `{ path_pattern, method, price_usdc }` (e.g. `path_pattern: "/v1/chat"`, `method: "POST"`, `price_usdc: 0.01`).
-- **Outcome**: Returns `api_slug` and `provider_id` in a boundary-wrapped response. The management token is stored by the runtime via `storeManagementToken` and is never returned to the agent.
+- **Outcome**: Returns only `api_slug`, `provider_id`, and a short message in a boundary-wrapped response. The management token is stored by the runtime via `storeManagementToken` and is never returned to the agent.
 
 ### `get_earnings`
 

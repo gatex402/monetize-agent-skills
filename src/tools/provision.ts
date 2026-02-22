@@ -75,6 +75,7 @@ export async function provisionApi(
     await Promise.resolve(credentials.storeManagementToken(management_token));
   }
 
+  // Agent response contains only api_slug, provider_id, and message; management_token is never returned.
   const agentSafe = {
     api_slug,
     provider_id,

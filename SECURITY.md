@@ -1,6 +1,6 @@
 # Security and trust boundaries
 
-This document describes how the x402-creation skill handles credentials and external communication so that auditors and operators can reason about risk and whitelisting.
+This document describes how the x402-agentic-creation skill handles credentials and external communication so that auditors and operators can reason about risk and whitelisting.
 
 ## Backend communication
 
@@ -11,7 +11,7 @@ This document describes how the x402-creation skill handles credentials and exte
 ## Credentials
 
 - **Wallet private key**: Never exposed to the agent or in tool parameters. Supplied only by the host via `createTools({ getWalletPrivateKey })` (e.g. from env or a secure vault).
-- **Management token**: Never returned to the agent. After provisioning, the token is passed to the host via `storeManagementToken` and later supplied to the tools via `getManagementToken`. The agent only sees `api_slug`, `provider_id`, and a short message.
+- **Management token**: Never returned to the agent. The `provision_api` tool **never includes `management_token` in its return value**; the tool response contains only `api_slug`, `provider_id`, and a non-sensitive message. After provisioning, the token is passed to the host via `storeManagementToken` and later supplied to the tools via `getManagementToken`.
 
 ## Response handling (indirect prompt injection)
 
@@ -20,5 +20,5 @@ This document describes how the x402-creation skill handles credentials and exte
 
 ## Installation
 
-- **Preferred**: Install from npm (`npm install x402-creation`) and add the skill from the official repo or package path. This avoids executing code from unverified third-party registries.
+- **Preferred**: Install from npm (`npm install x402-agentic-creation`) and add the skill from the official repo or package path. This avoids executing code from unverified third-party registries.
 - **Alternative**: If you use a third-party registry (e.g. `npx skills add ...`), ensure that registry is trusted or whitelisted in your environment.

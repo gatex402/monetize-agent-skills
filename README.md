@@ -1,4 +1,4 @@
-# x402-creation
+# x402-agentic-creation
 
 **The monetization layer for the Agentic Web.**
 
@@ -16,7 +16,7 @@ GateX402 is an API monetization platform. This repository provides a production-
 **Recommended (npm + official repo):** Install from npm and add the skill from this repository or the installed package. No third-party registry required.
 
 ```bash
-npm install x402-creation
+npm install x402-agentic-creation
 ```
 
 To add this skill in an agent framework, point it at the installed package or at the official repo (e.g. `https://github.com/gatex402/monetize-agent-skills` or the path to this package). Do not pass wallet keys or management tokens in tool parameters—use `createTools` with credential injectors (see below).
@@ -24,7 +24,7 @@ To add this skill in an agent framework, point it at the installed package or at
 **Alternative (third-party registry):** If your environment allows it, you can also add via a compatible registry:
 
 ```bash
-npx skills add gatex402/monetize-agent-skills --skill x402-creation
+npx skills add gatex402/monetize-agent-skills --skill x402-agentic-creation
 ```
 
 Prefer the npm + official repo flow when possible for safer, auditable installation.
@@ -34,7 +34,7 @@ Prefer the npm + official repo flow when possible for safer, auditable installat
 Credentials are injected by the host via `createTools`. The agent never receives wallet private keys or management tokens.
 
 ```typescript
-import { createTools } from "x402-creation";
+import { createTools } from "x402-agentic-creation";
 
 let managementToken: string | null = null;
 
